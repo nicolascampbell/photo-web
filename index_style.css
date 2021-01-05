@@ -27,11 +27,42 @@ a:hover {
 nav{
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-area: nav;
 }
 .nav_item{
-    text-align: center;
-    
+    text-align: center; 
 }
+#main_pic{
+    grid-area: main_pic;
+    max-width: 720px;
+    height: 480px;
+    overflow: hidden;
+    justify-self: center;
+}
+#about{
+    grid-area: about;
+    justify-self: center;
+}
+#about img{
+    object-fit: cover;
+  object-position: -20% 0;
+  width: 300px;
+  float: left;
+  padding-left: 50px;
+  padding-right: 50px;
+  height: 337px;
+}
+#container{
+    display: grid;
+    grid-template-rows:auto 1fr 3fr 3fr;
+    align-items: center;
+    grid-template-areas:
+    "nav"
+    "."
+    "main_pic"
+    "about";
+}
+
 @media only screen and (max-width:768px){
     header{
         padding-top: 75px;
@@ -54,7 +85,8 @@ nav{
 	#container{
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 3fr 1fr 4fr 1fr;
+        grid-template-rows: auto 1fr 4fr 4fr auto;
         align-items: center;
+
     }
 }
