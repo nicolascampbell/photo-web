@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
 import Navbar from './components/Navbar.vue';
 import Title from './components/title.vue';
 import About from './components/about_home.vue';

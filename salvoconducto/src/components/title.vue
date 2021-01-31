@@ -25,4 +25,7 @@
     color:#ffff;
     font-family: 'Megrim', cursive;
     }
+    h1{
+      font-size: 3em;
+    }
 </style>
