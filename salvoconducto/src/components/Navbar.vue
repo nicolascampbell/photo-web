@@ -14,44 +14,43 @@
 </template>
     
 <script lang="ts">
-
-export default {
+import Vue from "vue";
+export default Vue.extend({
     name:'navbar',
-    created () {
-        window.addEventListener('scroll', this.handleScroll);
-    },
-    destroyed () {
-        window.removeEventListener('scroll', this.handleScroll);
-    },
-    data () {
-    return {
-      lastScrollPosition:0,
-      scrolled:{
-          scrolled_up:false,
-          scrolled_down:false
-      }
-      
-    }
+    data (){
+        return{
+            lastScrollPosition:0,
+            scrolled:{
+            scrolled_up:false,
+            scrolled_down:false
+            },
+        }   
     },
     methods: {
-        handleScroll () :void{
-            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop    // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
+        handleScroll: function(){
+            const currentScrollPosition = window.pageYOffset 
+                                            || document.documentElement.scrollTop;
+            // Because of momentum scrolling on mobiles, 
+            //we shouldn't continue if it is less than zero
             if (currentScrollPosition < 30) {
-                return
-            }    // Here we determine whether we need to show or hide the navbar
-            if(currentScrollPosition < this.lastScrollPosition )  {
-                this.scrolled.scrolled_up=true
-                this.scrolled.scrolled_down=false
-            }else{
-                this.scrolled.scrolled_down=true
-                this.scrolled.scrolled_up=false
-            } // Set the current scroll position as the last scroll position
-            this.lastScrollPosition = currentScrollPosition
-  }
-    }
-  }
-
-
+                return;
+            }    
+            // Here we determine whether we need to show or hide the navbar
+            this.scrolled.scrolled_up=currentScrollPosition < this.lastScrollPosition;
+            this.scrolled.scrolled_down=!this.scrolled.scrolled_up;
+            // Set the current scroll position as the last scroll position
+            this.lastScrollPosition = currentScrollPosition;
+        },
+    },
+    created(){
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed() {
+        window.removeEventListener('scroll', this.handleScroll);
+    },
+    
+    
+})
 
 </script>
 <style>
