@@ -1,0 +1,14 @@
+{
+  "name": "salvoconducto_server",
+  "version": "1.0.0",
+  "description": "Salvoconducto is a website where you can find the Photos of N. Thisserver will be used as the backend for it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nicolas de Souza",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
