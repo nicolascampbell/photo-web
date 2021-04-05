@@ -5,18 +5,19 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
 //Subdocument for the Images in Mongo
-let imagesSchema = new Schema ({
+let imageSchema = new Schema ({
     title: String,
     id: Number,
     description: String,
     path: String,
+    pathHQ:String,
 });
 
 //Generalized version of Films to be able to accept also Collections
 let collectionSchema = new Schema ({
     name: String,
     description: String,
-    images: [ imagesSchema ],
+    images: [ imageSchema ],
     isFilm: Boolean,
     date: String,
     place: String,
@@ -25,3 +26,4 @@ let collectionSchema = new Schema ({
     coverFotoId: Number,
 });
 
+module.exports=mongoose.model('Collection', collectionSchema);
