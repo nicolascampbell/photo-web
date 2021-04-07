@@ -14,9 +14,9 @@
           style="font-size: 1.2em !important; width: 100%"
           align="center"
         >
-          <b-nav-item @click="goToHome" active href="#">Home</b-nav-item>
-          <b-nav-item @click="goToFilms">Films</b-nav-item>
-          <b-nav-item>Collections</b-nav-item>
+          <b-nav-item @click="goToHome" :active="activer === 0" href="#">Home</b-nav-item>
+          <b-nav-item @click="goToFilms" :active="activer === 1">Films</b-nav-item>
+          <b-nav-item :active="activer === 2">Collections</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -34,11 +34,10 @@ export default Vue.extend({
         scrolled_up: false,
         scrolled_down: false,
       },
+      activer:0,
     };
   },
   props: {
-    goToHome: Function,
-    goToFilms: Function,
   },
   methods: {
     handleScroll: function () {
@@ -55,6 +54,14 @@ export default Vue.extend({
       this.scrolled.scrolled_down = !this.scrolled.scrolled_up;
       // Set the current scroll position as the last scroll position
       this.lastScrollPosition = currentScrollPosition;
+    },
+    goToHome:function(){
+      this.activer=0;
+      return this.$emit('goToHome');
+    },
+    goToFilms:function(){
+      this.activer=1;
+      return this.$emit('goToFilms');
     },
   },
   created() {
