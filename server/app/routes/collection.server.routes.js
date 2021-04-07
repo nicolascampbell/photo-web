@@ -2,13 +2,14 @@ const collection_controller=require('../controllers/collection.server.controller
 
 
 module.exports.getCollections=function(app) {
-    app.get('/Collections', collection_controller.getCollections);
+    app.get('/collections', collection_controller.get_collections_list);
 };
 
 module.exports.getCollection=function(app) {
-    app.get('/Collections/:collectionId', collection_controller.getCollection);
+    app.get('/collections/:collectionId', collection_controller.get_collection);
 };
 
-module.exports.getImageFromFilm=function(app) {
-    app.get('/Collections/:collectionId/:imageId', collection_controller.getImageFromCollection);
+module.exports.getImageFromCollection=function(app) {
+    app.get('/collections/:collectionId/:imageId',
+            collection_controller.get_image_from_collection);
 };

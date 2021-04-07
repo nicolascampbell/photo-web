@@ -1,6 +1,6 @@
 const express=require('./config/express');
 const mongoose=require('./config/mongoose');
-var db=mongoose();
+let db=mongoose();
 let app=express();
 
 module.exports=app;
