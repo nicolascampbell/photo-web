@@ -14,15 +14,21 @@
           style="font-size: 1.2em !important; width: 100%"
           align="center"
         >
-          <b-nav-item @click="goToHome" :active="activer === 0" href="#">Home</b-nav-item>
-          <b-nav-item @click="goToFilms" :active="activer === 1">Films</b-nav-item>
-          <b-nav-item :active="activer === 2">Collections</b-nav-item>
+          <b-nav-item to="/">
+            Home
+          </b-nav-item>
+          <b-nav-item to="/Films">
+            Films
+          </b-nav-item>
+          <b-nav-item to="/Collections">
+            Collections
+          </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </div>
 </template>
-    
+
 <script lang="ts">
 import Vue from "vue";
 export default Vue.extend({
@@ -34,10 +40,7 @@ export default Vue.extend({
         scrolled_up: false,
         scrolled_down: false,
       },
-      activer:0,
     };
-  },
-  props: {
   },
   methods: {
     handleScroll: function () {
@@ -55,14 +58,6 @@ export default Vue.extend({
       // Set the current scroll position as the last scroll position
       this.lastScrollPosition = currentScrollPosition;
     },
-    goToHome:function(){
-      this.activer=0;
-      return this.$emit('goToHome');
-    },
-    goToFilms:function(){
-      this.activer=1;
-      return this.$emit('goToFilms');
-    },
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
@@ -73,10 +68,6 @@ export default Vue.extend({
 });
 </script>
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Megrim&family=Rajdhani&display=swap");
-div:first-child {
-  font-family: "Rajdhani", sans-serif;
-}
 .fixed-scroll {
   position: fixed;
   top: 0;
@@ -94,4 +85,5 @@ div:first-child {
   transform: translateY(0);
   transition: all 0.3s ease-in-out;
 }
+
 </style>

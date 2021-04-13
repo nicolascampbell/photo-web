@@ -4,7 +4,7 @@
       <b-row no-gutters>
         <b-col md="7">
           <b-card-img
-            :src="require('../assets/front_rollo_2.jpg')"
+            :src="require(getCoverPath)"
             alt="front_rollo_2"
           ></b-card-img>
         </b-col>
@@ -20,5 +20,14 @@
   </div>
 </template>
 <script lang="ts">
-export default {};
+export default {
+  props:{
+    filmInfo:Object,
+  },
+  computed:{
+    getCoverPath:function(){
+      return `../assets/${this.filmInfo.name}/${this.filmInfo.coverFotoId}.jpg`;
+    }
+  }
+};
 </script>
